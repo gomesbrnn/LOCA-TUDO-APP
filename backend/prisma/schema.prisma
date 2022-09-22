@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Movies {
+  id            Int         @id @default(autoincrement())
+  titulo        String
+  anoLancamento Int
+  genero        String
+  duracao       Int
+  sinopse       String      @db.VarChar(3000)
+  imagem        String?
+  preco         Float
+  movie_rent    MovieRent[] @relation("movies")
+
+  @@map("movies")
+}
+
+model Users {
+  id         Int         @id @default(autoincrement())
+  nome       String
+  email      String      @unique
+  senha      String
+  cpf        String      @unique
+  role       Roles       @relation(fields: [roleId], references: [id])
+  roleId     Int
+  movie_rent MovieRent[] @relation("users")
+
+  @@map("users")
+}
+
+model Roles {
+  id    Int     @id @default(autoincrement())
+  role  String  @unique
+  users Users[]
+
+  @@map("roles")
+}
+
+model MovieRent {
+  movie   Movies @relation("movies", fields: [movieId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  movieId Int
+  user    Users  @relation("users", fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId  Int
+  alugado_em DateTime @default(now())
+  idRelacao Int @default(autoincrement())
+
+  @@id([idRelacao])
+  @@map("movie_rent")
+}
