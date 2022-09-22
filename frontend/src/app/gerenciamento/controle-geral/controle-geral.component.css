@@ -1,0 +1,27 @@
+.text-white {
+    max-width: 18rem;
+    box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 10px 10px 10px 10px;
+}
+
+.card-header {
+    text-align: center;
+}
+
+.card-text {
+    display: flex;
+    justify-content: center;
+}
+
+/* .endpage {
+    text-align: center;
+} */
+
+div.bg-darkb {
+    background-color: #669bbc;
+}
+
+a.btn-lightb {
+    color: white;
+    background-color: #003049;
+}

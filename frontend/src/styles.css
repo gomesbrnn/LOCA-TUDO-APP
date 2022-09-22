@@ -1,0 +1,25 @@
+body {
+    background-color: #fdf0d59d;
+}
+
+.main-container {
+    padding-top: 60px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.pag-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer {
+    height: 50px;
+    text-align: center;
+}

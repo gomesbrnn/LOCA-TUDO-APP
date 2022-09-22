@@ -1,0 +1,31 @@
+<div class="main-container">
+
+    <h2 class="diplay-4 text-center">Minhas Locações</h2>
+    <hr>
+    <br>
+
+    <div class="row main-container">
+        <div class="col-md-4" *ngFor="let usuario of usuario.movie_rent">
+            <div class="card">
+                <a [routerLink]="['/visualizar-filme', usuario.movie.id]" class="text-decoration-none">
+                    <img src="http://localhost:3000/poster/{{usuario.movie.imagem}}" class="card-img-top"
+                        alt="Chicago Skyscrapers" />
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{usuario.movie.titulo | slice:0:17}} {{usuario.movie.titulo.length >= 17 ?
+                        '...' : null}}</h5>
+                    <p class="card-text">{{usuario.movie.sinopse | slice:0:30}}
+                    </p>
+                </div>
+                <ul class="list-group list-group-light list-group-small">
+                    <li class="list-group-item px-4">Duração: {{usuario.movie.duracao}} min</li>
+                    <li class="list-group-item px-4">Genero: {{usuario.movie.genero | slice:0:16}}
+                        {{usuario.movie.genero.length >= 16 ?
+                        '...' : null}}</li>
+                    <li class="list-group-item px-4">Ano de Lançamento: {{usuario.movie.anoLancamento}}</li>
+                </ul>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,134 @@
+<div class="main-container">
+
+    <h2 class="diplay-4 text-center">Catálogo</h2>
+    <hr>
+    <br>
+
+    <div class="input-group rounded src-bar">
+        <input type="search" class="form-control rounded" placeholder="Pesquisar" aria-label="Pesquisar"
+            aria-describedby="search-addon" (input)="search($event)" />
+        <span class="border-0 srch-icon" id="search-addon">
+            <img width="28px" height="28px" src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-512.png"
+                alt="">
+        </span>
+    </div>
+
+    <div class="row main-container">
+        <div class="col-md-4" *ngFor="let filme of filmes | paginate: { itemsPerPage: 9, currentPage: p }">
+
+            <div class="card">
+                <a [routerLink]="['/visualizar-filme', filme.id]" class="text-decoration-none">
+                    <img src="http://localhost:3000/poster/{{filme.imagem}}" class="card-img-top"
+                        alt="Chicago Skyscrapers" />
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{filme.titulo | slice:0:17}}
+                        {{filme.titulo.length >= 17 ? '...' : null}}
+                    </h5>
+                    <p class="card-text">{{filme.sinopse | slice:0:30}} {{filme.sinopse.length >= 30 ? '...' : null}}
+                    </p>
+                </div>
+                <ul class="list-group list-group-light list-group-small">
+                    <li class="list-group-item px-4">Duração: {{filme.duracao}} min</li>
+                    <li class="list-group-item px-4">Genero: {{filme.genero | slice:0:16}} {{filme.genero.length >= 16 ?
+                        '...' : null}}</li>
+                    <li class="list-group-item px-4">Ano de Lançamento: {{filme.anoLancamento}}</li>
+                </ul>
+
+                <!-- Modal -->
+                <div class="card-body">
+
+                    <p class="card-text">
+                        Alugue por: {{filme.preco | currency : 'BRL'}}
+                        <a href="#" type="button" class="card-link btn btn-sm" data-toggle="modal"
+                            data-target="#exampleModalCenter"><img width="25px" height="25px"
+                                src="https://cdn4.iconfinder.com/data/icons/erp-software-icon-set-1/512/new_purchase-512.png"
+                                alt="" (click)="getFilmId(filme.id)">
+                        </a>
+                    </p>
+
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Checkout</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                        #closebutton>
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form class="form-horizontal" #formDir="ngForm" [formGroup]="postLocacao"
+                                        (submit)=" addLocacao()">
+
+                                        <div class="form-group" hidden>
+                                            <label>Usuario Id</label>
+                                            <input type="text" class="form-control" formControlName="userId">
+
+                                            <div *ngIf="userId.invalid && formDir.submitted" class="v-error">
+                                                <p *ngIf="userId.errors?.['required']">O campo userId é obrigatório.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" hidden>
+                                            <label>Filme Id</label>
+                                            <input type="text" class="form-control" formControlName="movieId">
+
+                                            <div *ngIf="movieId.invalid && formDir.submitted" class="v-error">
+                                                <p *ngIf="movieId.errors?.['required']">O campo movieId é obrigatório.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Filme</label>
+                                            <input type="text" class="form-control" formControlName="movie">
+
+                                            <div *ngIf="movie.invalid && formDir.submitted" class="v-error">
+                                                <p *ngIf="movie.errors?.['required']">O campo movie é obrigatório.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Preço de locação</label>
+                                            <input type="number" class="form-control" formControlName="preco" readonly
+                                                aria-label="Close">
+
+                                            <div *ngIf="preco.invalid && formDir.submitted" class="v-error">
+                                                <p *ngIf="preco.errors?.['required']">O campo preco é obrigatório.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Locar</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Cancelar</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fim Modal -->
+            </div>
+            <br>
+        </div>
+    </div>
+    <div class="pag-center">
+        <pagination-controls (click)="onActivate($event)" (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#modal').modal('toggle');
+    });
+</script>

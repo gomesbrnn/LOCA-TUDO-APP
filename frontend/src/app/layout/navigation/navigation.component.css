@@ -1,0 +1,20 @@
+.bg-darkp {
+    background-color: #669bbc;
+}
+
+.navbar-darkp {
+    background-color: #669bbc;
+}
+
+a {
+    color: white;
+}
+
+#navbarResponsive {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.l-icon {
+    padding-left: 10px;
+}

@@ -1,0 +1,33 @@
+<form class="main-container login" [formGroup]="loginUsuario" (submit)="loginUser()" #formDir="ngForm">
+
+    <!-- Title page -->
+    <h3 class="display-4 text-center">Login</h3>
+    <br>
+
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <input type="email" class="form-control" formControlName="email" />
+        <label class="form-label">E-mail</label>
+
+        <div *ngIf="email.invalid && formDir.submitted" class="v-error">
+            <p *ngIf="email.errors?.['required']">O campo email é obrigatório.</p>
+        </div>
+    </div>
+
+    <!-- Senha input -->
+    <div class="form-outline mb-4">
+        <input type="password" class="form-control" formControlName="senha" />
+        <label class="form-label">Senha</label>
+        <br>
+        <small><a [routerLink]="['/recuperar senha']">Esqueceu a senha?</a> </small>
+
+        <div *ngIf="senha.invalid && formDir.submitted" class="v-error">
+            <p *ngIf="senha.errors?.['required']">O campo senha é obrigatório.</p>
+        </div>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-info btn-block mb-4">Entrar</button>
+    <small><a [routerLink]="['/registro']">Não tem acesso? registre-se</a> </small>
+
+</form>

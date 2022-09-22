@@ -1,0 +1,37 @@
+<div class="main-container">
+
+    <h2>Locações</h2>
+    <hr>
+
+    <table class="table table-striped table-darkb">
+
+        <thead>
+            <tr>
+                <th scope="col">Usuario</th>
+                <th scope="col">Filme</th>
+                <th scope="col">Data de Alguel</th>
+                <th scope="col">Opções</th>
+            </tr>
+        </thead>
+
+        <tbody *ngFor="let locacao of locacoes | paginate: { itemsPerPage: 5, currentPage: p }">
+            <tr>
+                <td>{{locacao.user.nome}}</td>
+                <td>{{locacao.movie.titulo}}</td>
+                <td>{{locacao.alugado_em | date:'dd/MM/yyyy'}}</td>
+                <td>
+                    <a class="btn btn-info btn-sm" [routerLink]="['/editar-locacao', locacao.idRelacao]">Editar</a>
+
+                    <a class="btn btn-danger btn-sm" (click)="deleteLocacao(locacao.idRelacao)">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-darkb" [routerLink]="['/catalogo']">Nova Locação</a>
+    <br> <br>
+
+    <div class="pag-center">
+        <pagination-controls (click)="onActivate($event)" (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>

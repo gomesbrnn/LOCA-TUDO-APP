@@ -1,0 +1,40 @@
+/* .bg-dred {
+    background-color: #fdf0d59d;
+} */
+
+h1.display-1 {
+    color: #003049;
+}
+
+h2.featurette-heading {
+    color: #003049;
+}
+
+p.lead {
+    color: #003049;
+}
+
+.alg-ctr {
+    padding-top: 60px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
+    /* min-height: 100vh; */
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+    padding-right: 30px;
+}
+
+.btn-primary {
+    background-color: #003049;
+}
+
+.cr-pst {
+    min-height: 70vh;
+}

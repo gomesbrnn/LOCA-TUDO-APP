@@ -1,0 +1,50 @@
+<div class="main-container">
+    <h2>Atualizar Locação</h2>
+    <hr>
+    <br>
+
+    <form class="form-horizontal" [formGroup]="patchLocacao" (submit)="updateLocacao()" #formDir="ngForm">
+
+        <div class="form-group">
+            <label>Locador</label>
+            <input type="text" class="form-control" formControlName="user" readonly>
+
+            <div *ngIf="user.invalid && formDir.submitted" class="v-error">
+                <p *ngIf="user.errors?.['required']">O campo user é obrigatório.</p>
+            </div>
+        </div>
+
+        <!-- <div class="form-group">
+            <label>Filme</label>
+            <input type="text" class="form-control" formControlName="movieId">
+
+            <div *ngIf="movieId.invalid && formDir.submitted" class="v-error">
+                <p *ngIf="movieId.errors?.['required']">O campo movieId é obrigatório.</p>
+            </div>
+        </div> -->
+
+        <div class="form-group">
+            <label>Filme</label>
+            <select class="form-control" formControlName="movieId">
+                <option type="number" value="{{locacao.movieId}}">{{locacao.movie.titulo}}</option>
+                <option *ngFor="let filme of filme" type="number" value="{{filme.id}}">{{filme.titulo}}</option>
+            </select>
+
+            <div *ngIf="movieId.invalid && formDir.submitted" class="v-error">
+                <p *ngIf="movieId.errors?.['required']">O campo movieId é obrigatório.</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Data da Locação</label>
+            <input type="datetime" class="form-control" formControlName="alugado_em">
+
+            <div *ngIf="alugado_em.invalid && formDir.submitted" class="v-error">
+                <p *ngIf="alugado_em.errors?.['required']">O campo alugado_em é obrigatório.</p>
+            </div>
+        </div>
+
+        <br>
+        <button class="btn btn-darkb">Atualizar</button>
+    </form>
+</div>

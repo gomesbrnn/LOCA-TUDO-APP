@@ -1,0 +1,33 @@
+<div class="container main-container">
+    <div class="row">
+        <div class="h-12">
+            <a href="" class="btn btn-primary btn-sm" [routerLink]="['/catalogo']">Retornar</a>
+            <br> <br>
+            <div class="card h-100">
+                <h5 class="titulo display-4">{{filme.titulo}}</h5>
+                <a class="text-decoration-none" [routerLink]="['/catalogo']">
+                    <div class="imagem">
+                        <img class="card-img-top" src="http://localhost:3000/poster/{{filme.imagem}}" alt=""
+                            width="80px" height="500px">
+                    </div>
+                </a>
+                <div class="card-body">
+                    <label>Sinopse</label>
+                    <p class="texto">{{filme.sinopse}}</p>
+
+                    <label>Genero</label>
+                    <div class="">
+                        <p>{{filme.genero}}</p>
+                    </div>
+
+                    <label>Duração</label>
+                    <p class="texto">{{filme.duracao}} min</p>
+
+                    <label>Ano de Lançamento</label>
+                    <p class="texto">{{filme.anoLancamento}}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

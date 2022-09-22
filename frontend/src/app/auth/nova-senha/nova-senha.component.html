@@ -1,0 +1,31 @@
+<form class="main-container login" [formGroup]="resetPass" (submit)="resetPw()" #formDir="ngForm">
+
+    <!-- Title -->
+    <h3 class="display-4 text-center">Redefinir senha</h3>
+    <br>
+
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <input type="email" class="form-control" formControlName="email" />
+        <label class="form-label">E-mail</label>
+
+        <div *ngIf="email.invalid && formDir.submitted" class="v-error">
+            <p *ngIf="email.errors?.['required']">O campo email é obrigatório.</p>
+        </div>
+    </div>
+
+    <!-- CPF input -->
+    <div class="form-outline mb-4">
+        <input type="text" class="form-control" formControlName="cpf" />
+        <label class="form-label">Cpf</label>
+        <br>
+
+        <div *ngIf="cpf.invalid && formDir.submitted" class="v-error">
+            <p *ngIf="cpf.errors?.['required']">O campo cpf é obrigatório.</p>
+        </div>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-info btn-block mb-4">Confirmar</button>
+
+</form>

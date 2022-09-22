@@ -1,0 +1,69 @@
+<div class="main-container">
+    <h2>Cadastar filme</h2>
+    <hr>
+    <br>
+
+    <form class="form-horizontal" [formGroup]="postFilme" (submit)="postFilm()" #formDir="ngForm">
+        <div class="form-group">
+            <label>Titulo</label>
+            <input type="text" class="form-control" formControlName="titulo">
+
+            <div *ngIf="titulo.invalid && formDir.submitted" class="v-error">
+                <p *ngIf="titulo.errors?.['required']">O campo titulo é obrigatório.</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Ano de lançamento</label>
+            <input type="number" class="form-control" formControlName="anoLancamento">
+
+            <div *ngIf="anoLancamento.invalid && formDir.submitted" class="v-error">
+                <p *ngIf="anoLancamento.errors?.['required']">O campo anoLancamento é obrigatório.</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Genero</label>
+            <input type="text" class="form-control" formControlName="genero">
+
+            <div *ngIf="genero.invalid && formDir.submitted" class="v-error">
+                <p *ngIf="genero.errors?.['required']">O campo genero é obrigatório.</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Duracao</label>
+            <input type="number" class="form-control" formControlName="duracao">
+
+            <div *ngIf="duracao.invalid && formDir.submitted" class="v-error">
+                <p *ngIf="duracao.errors?.['required']">O campo duracao é obrigatório.</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Sinopse</label>
+            <textarea class="form-control" rows="3" formControlName="sinopse"></textarea>
+
+            <div *ngIf="sinopse.invalid && formDir.submitted" class="v-error">
+                <p *ngIf="sinopse.errors?.['required']">O campo sinopse é obrigatório.</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Imagem</label>
+            <input type="file" class="form-control" (change)="fileChange($event)">
+        </div>
+
+        <div class="form-group">
+            <label>Preço</label>
+            <input type="number" class="form-control" formControlName="preco">
+
+            <div *ngIf="preco.invalid && formDir.submitted" class="v-error">
+                <p *ngIf="preco.errors?.['required']">O campo preco é obrigatório.</p>
+            </div>
+        </div>
+
+        <br>
+        <button class="btn btn-darkb" type="submit">Cadastrar</button>
+    </form>
+</div>

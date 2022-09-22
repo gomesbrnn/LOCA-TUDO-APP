@@ -1,0 +1,48 @@
+<form class="main-container registro" [formGroup]="postUsuario" (submit)="addUser()" #formDir="ngForm">
+
+    <h3 class="display-4 text-center">Registro</h3>
+    <br>
+
+    <!-- Name input -->
+    <div class="form-outline mb-4">
+        <input type="text" class="form-control" placeholder="Digite seu nome e sobrenome" formControlName="nome" />
+        <label for="form5Example1" class="form-label">Nome</label>
+
+        <div *ngIf="nome.invalid && formDir.submitted" class="v-error">
+            <p *ngIf="nome.errors?.['required']">O campo nome é obrigatório.</p>
+        </div>
+    </div>
+
+    <!-- Name input -->
+    <div class="form-outline mb-4">
+        <input type="email" class="form-control" placeholder="seuemail@gmail.com" formControlName="email" />
+        <label for="form5Example1" class="form-label">E-mail</label>
+
+        <div *ngIf="email.invalid && formDir.submitted" class="v-error">
+            <p *ngIf="email.errors?.['required']">O campo email é obrigatório.</p>
+        </div>
+    </div>
+
+    <div class="form-outline mb-4">
+        <input type="text" class="form-control" placeholder="123.234.567-00" formControlName="cpf" />
+        <label for="form5Example1" class="form-label">Cpf</label>
+
+        <div *ngIf="cpf.invalid && formDir.submitted" class="v-error">
+            <p *ngIf="cpf.errors?.['required']">O campo cpf é obrigatório.</p>
+        </div>
+    </div>
+
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <input type="password" class="form-control" placeholder="Informe a senha da sua conta"
+            formControlName="senha" />
+        <label for="form5Example2" class="form-label">Senha</label>
+
+        <div *ngIf="senha.invalid && formDir.submitted" class="v-error">
+            <p *ngIf="senha.errors?.['required']">O campo senha é obrigatório.</p>
+        </div>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-info btn-block mb-4">Cadastrar</button>
+</form>

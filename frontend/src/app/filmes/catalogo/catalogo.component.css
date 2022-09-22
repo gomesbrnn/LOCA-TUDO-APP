@@ -1,0 +1,24 @@
+.card {
+    max-width: 16rem;
+    box-shadow: 0 39px 40px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 10px 10px 10px 10px;
+}
+
+img.card-img-top {
+    height: 230px;
+}
+
+a.btn-sm {
+    padding-bottom: 10px;
+}
+
+.src-bar {
+    width: 400px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.srch-icon {
+    padding-top: 3px;
+    padding-left: 5px;
+}
